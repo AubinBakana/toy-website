@@ -1,0 +1,21 @@
+git --version 
+git config --global.username "Aubin Bakana"
+git config --global.email "aubinbakana@hotmail.com"
+git config --list
+
+mkdir toy-website
+cd toy-website
+
+- To reopen the folder in VSC. 
+code --reuse-window . 
+
+git init 
+
+git status 
+
+- RENAME BRANCH FROM MASTER TO MAIN 
+git branch -M main  
+
+git log --pretty=oneline 
+git log --oneline
+git log deploy/main.bicep 
