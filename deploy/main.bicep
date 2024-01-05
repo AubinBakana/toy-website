@@ -7,6 +7,9 @@ param environmentType string = 'nonprod'
 @description('Azure regions/datacenter from where your resources should be deployed from.')
 param location string 
 
+@description('The name of the Cosmos DB account. This name must be globally unique.')
+param cosmosDBAccountName string = 'toyweb-${uniqueString(resourceGroup().id)}'
+
 
 // RESOURCES
 module AppServicePlan 'modules/app-service.bicep' = {
@@ -17,3 +20,13 @@ module AppServicePlan 'modules/app-service.bicep' = {
     location: location
   }
 }
+
+module cosmosDB 'modules/cosmos-db.bicep' = {
+  name: 'cosmos-db'
+  params: {
+    cosmosDBAccountName: cosmosDBAccountName
+    environmentType: environmentType
+    location: location
+  }
+}
+
